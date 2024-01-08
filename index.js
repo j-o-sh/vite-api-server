@@ -31,5 +31,5 @@ export default function viteServer(api) {
   }
 }
 
-export * from './builders'
+export * from './builders.js'
 
