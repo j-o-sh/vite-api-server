@@ -10,9 +10,10 @@
 function apiServer(api) {
   return (req, res, next) => {
     const { url, method } = req
-    if (api[url] && api[url][method.toLowerCase()]) {
-      // console.log('💀', url, method)
-      api[url][method.toLowerCase()](req, res, next)
+    const path = url.split('?')[0]
+      // console.log('💀', path, url, method)
+    if (api[path] && api[path][method.toLowerCase()]) {
+      api[path][method.toLowerCase()](req, res, next)
     } else {
       next()
     }
@@ -29,3 +30,6 @@ export default function viteServer(api) {
     },
   }
 }
+
+export * from './builders.js'
+
